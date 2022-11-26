@@ -91,7 +91,7 @@ class CustomDataset(Dataset):
                     or osp.isabs(self.proposal_file)):
                 self.proposal_file = osp.join(self.data_root,
                                               self.proposal_file)
-        # load annotations (and proposals)
+        # load annotations (and proposals)        
         if hasattr(self.file_client, 'get_local_path'):
             with self.file_client.get_local_path(self.ann_file) as local_path:
                 self.data_infos = self.load_annotations(local_path)
@@ -136,6 +136,7 @@ class CustomDataset(Dataset):
 
     def load_annotations(self, ann_file):
         """Load annotation from annotation file."""
+        import pdb; pdb.set_trace()
         return mmcv.load(ann_file)
 
     def load_proposals(self, proposal_file):
